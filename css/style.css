@@ -21,7 +21,7 @@ body {
 }
 
 .tasks-column {
-  flex: 2 1 500px;        /* позволяет колонке расширяться */
+  flex: 2 1 600px; /* позволяет колонке расширяться */
   min-width: 300px;
 }
 
@@ -78,13 +78,13 @@ button:hover {
 
 .task-card {
   flex: 1 1 250px;       /* растёт, минимум 250px */
-  max-width: 300px;      /* максимум ширины */
+  max-width: 300px;
   box-sizing: border-box;
   background: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  min-height: 120px;
+  min-height: auto;      /* не растягиваем на всю высоту строки */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
