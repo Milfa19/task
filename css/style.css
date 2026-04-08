@@ -15,13 +15,14 @@ body {
   margin: auto;
 }
 
-.form-column, .tasks-column {
-  flex: 1;
-  min-width: 300px;
+.form-column {
+  flex: 1 1 300px;
+  min-width: 250px;
 }
 
 .tasks-column {
-  margin-left: 40px;
+  flex: 2 1 500px;        /* позволяет колонке расширяться */
+  min-width: 300px;
 }
 
 input, textarea, button {
@@ -71,20 +72,19 @@ button:hover {
 /* --- Карточки в ряд с переносом --- */
 #tasks-list {
   display: flex;
-  flex-wrap: wrap;       /* перенос карточек на новую строку */
-  gap: 20px;             /* расстояние между карточками */
+  flex-wrap: wrap;       /* перенос карточек */
+  gap: 20px;
 }
 
 .task-card {
   flex: 1 1 250px;       /* растёт, минимум 250px */
   max-width: 300px;      /* максимум ширины */
-  border: none;
+  box-sizing: border-box;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
-  background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   min-height: 120px;
-  box-sizing: border-box;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -122,6 +122,10 @@ button:hover {
 
 /* Мобильная адаптация */
 @media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
   .tasks-column {
     margin-left: 0;
     margin-top: 30px;
