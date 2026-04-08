@@ -68,22 +68,24 @@ button:hover {
   font-size: 0.9rem;
 }
 
+/* --- Карточки в ряд --- */
 #tasks-list {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;        /* карточки переносятся на новую строку */
+  gap: 20px;              /* расстояние между карточками */
 }
 
 .task-card {
+  flex: 1 1 250px;        /* растёт, минимум 250px */
+  max-width: 300px;       /* максимум ширины */
   border: none;
   padding: 20px;
   border-radius: 12px;
-  width: 100%;
-  box-sizing: border-box;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 120px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .task-card:hover {
@@ -118,13 +120,20 @@ button:hover {
   background-color: #c0392b;
 }
 
+/* Мобильная адаптация */
 @media (max-width: 600px) {
   .tasks-column {
     margin-left: 0;
     margin-top: 30px;
   }
 
+  #tasks-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .task-card {
     width: 100%;
+    max-width: 100%;
   }
 }
