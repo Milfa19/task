@@ -15,20 +15,16 @@ body {
   margin: auto;
 }
 
-/* --- Колонка формы --- */
 .form-column {
   flex: 1 1 300px;
   min-width: 250px;
 }
 
-/* --- Колонка задач --- */
 .tasks-column {
-  flex: 2 1 600px;       /* ширина колонки */
+  flex: 2 1 600px; /* позволяет колонке расширяться */
   min-width: 300px;
-  margin-left: 40px;     /* сдвиг вправо */
 }
 
-/* --- Поля формы --- */
 input, textarea, button {
   display: block;
   width: 100%;
@@ -36,6 +32,7 @@ input, textarea, button {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 
 input:focus, textarea:focus {
@@ -44,7 +41,6 @@ input:focus, textarea:focus {
   outline: none;
 }
 
-/* --- Кнопки --- */
 button {
   background-color: #4a90e2;
   color: white;
@@ -61,58 +57,6 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* --- Контейнер карточек с grid --- */
-#tasks-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* карточки уже */
-  gap: 15px;
-}
-
-/* --- Карточки задач --- */
-.task-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  max-width: 180px;   /* ограничение ширины */
-  min-height: auto;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.task-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.task-card h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  word-wrap: break-word;
-}
-
-.task-card p {
-  margin: 5px 0;
-  font-size: 0.85rem;
-  word-wrap: break-word;
-}
-
-.task-card .delete-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  transition: background-color 0.3s ease;
-}
-
-.task-card .delete-btn:hover {
-  background-color: #c0392b;
-}
-
-/* --- Фильтры --- */
 .filter-buttons {
   margin-top: 20px;
   display: flex;
@@ -125,23 +69,75 @@ button:hover {
   font-size: 0.9rem;
 }
 
-/* --- Мобильная адаптация --- */
+/* --- Карточки в ряд с переносом --- */
+#tasks-list {
+  display: flex;
+  flex-wrap: wrap;       /* перенос карточек */
+  gap: 20px;
+}
+
+.task-card {
+  flex: 1 1 250px;       /* растёт, минимум 250px */
+  max-width: 300px;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-height: auto;      /* не растягиваем на всю высоту строки */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.task-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: #4a4a4a;
+}
+
+.task-card p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.task-card .delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.task-card .delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Мобильная адаптация */
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
   }
 
   .tasks-column {
-    margin-left: 0; /* убираем сдвиг на мобилках */
+    margin-left: 0;
     margin-top: 30px;
   }
 
   #tasks-list {
-    grid-template-columns: 1fr; /* на мобильных в колонку */
-    gap: 10px;
+    flex-direction: column;
+    gap: 15px;
   }
 
   .task-card {
+    width: 100%;
     max-width: 100%;
   }
 }
