@@ -92,14 +92,18 @@ button:hover {
 
 .task-card h3 {
   margin: 0 0 8px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;       /* чуть меньше заголовка */
   color: #4a4a4a;
+  max-width: 90%;          /* текст уже, не занимает всю ширину */
+  word-wrap: break-word;   /* перенос длинных слов */
 }
 
 .task-card p {
   margin: 5px 0;
   color: #666;
-  font-size: 0.95rem;
+  font-size: 0.9rem;       /* чуть меньше текста */
+  max-width: 90%;          /* текст уже */
+  word-wrap: break-word;   /* перенос длинных слов */
 }
 
 .task-card .delete-btn {
