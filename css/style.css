@@ -68,21 +68,21 @@ button:hover {
   font-size: 0.9rem;
 }
 
-/* --- Карточки в ряд --- */
+/* --- Карточки в ряд с переносом --- */
 #tasks-list {
   display: flex;
-  flex-wrap: wrap;        /* карточки переносятся на новую строку */
-  gap: 20px;              /* расстояние между карточками */
+  flex-wrap: wrap;       /* перенос карточек на новую строку */
+  gap: 20px;             /* расстояние между карточками */
 }
 
 .task-card {
-  flex: 1 1 250px;        /* растёт, минимум 250px */
-  max-width: 300px;       /* максимум ширины */
+  flex: 1 1 250px;       /* растёт, минимум 250px */
+  max-width: 300px;      /* максимум ширины */
   border: none;
   padding: 20px;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   min-height: 120px;
   box-sizing: border-box;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -90,7 +90,7 @@ button:hover {
 
 .task-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .task-card h3 {
